@@ -1,0 +1,18 @@
+[package]
+name = "local-server"
+version = "1.0.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "A tiny offline server for any computer: serves your sites and apps without internet and keeps a private, versioned archive of websites."
+publish = false
+
+# No dependencies: Rust standard library only.
+[dependencies]
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+# "unwind": an unexpected error in one download does not bring the whole server down
+panic = "unwind"
+strip = true
