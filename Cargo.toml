@@ -1,0 +1,17 @@
+[package]
+name = "local-server"
+version = "1.0.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+publish = false
+
+# Sem dependências: só a biblioteca padrão do Rust.
+[dependencies]
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+# "unwind": um erro inesperado num download não derruba o servidor inteiro
+panic = "unwind"
+strip = true
